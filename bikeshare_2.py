@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 
 def cleanData(dataFrame):
+    # function to clean the data for the file chosen
     if 'Gender' in dataFrame:
         return dataFrame.dropna(subset=['Gender', 'Birth Year'])
     return dataFrame
@@ -11,24 +12,28 @@ def cleanData(dataFrame):
 ######
 
 def validateCity(xcity):
+    # function to validate the city input
     cities = ['chicago','washington','new york']
     return xcity in cities
 
 ######
 
 def validateMonth(xmonth):
+    # function to validate the month input
     months = ['1','2','3','4','5','6'] 
     return xmonth in months
 
 ######
 
 def validateDay(xday):
+    # function to validate the day input
     days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday','saturday','sunday'] 
     return xday in days
 
 ######
 
 def rowChoice(xchoice):
+    # function to validate the choice input
     choices = ['yes', 'no'] 
     return xchoice in choices
 
@@ -85,7 +90,7 @@ def load_data(city, month, day):
 ######
 
 def calculations(dataFrame,extra_info_flag):
-    
+    #calculation needed
     print('Popular Month : ' + str(calendar.month_name[dataFrame['month'].mode()[0]]))
     print('Popular Day : ' + str(calendar.day_name[dataFrame['day_of_week'].mode()[0]]))
     print('Popular Start Hour : ' + str(dataFrame['start_hour'].mode()[0]))
@@ -120,6 +125,7 @@ def calculations(dataFrame,extra_info_flag):
 ######
 
 def display_rows(df, start_index):
+    # func to diplay 5 rows each time called
     end_index = start_index + 5
     print(df.iloc[start_index:end_index])
     
